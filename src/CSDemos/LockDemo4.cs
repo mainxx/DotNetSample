@@ -13,12 +13,12 @@ namespace CSDemos.Lock
         public void Run()
         {
 
-            for (int i = 0; i <= 50; i++)
+            for (int i = 0; i <= 1200; i++)
             {
                 //多线程
                 var result = Task.Run<string>(() => GenerateId());
             }
-            Thread.Sleep(5000);
+            Thread.Sleep(200000);
         }
 
        /// <summary>
@@ -42,8 +42,8 @@ namespace CSDemos.Lock
                     _sn = 0;
                 }
                 _sn++;
-                Thread.Sleep(50);
-                var order = $"D{DateTime.Now.ToString("yyyyMMdd")}{_sn.ToString().PadLeft(3, '0')}({Thread.CurrentThread.ManagedThreadId.ToString()})";
+               // Thread.Sleep(50);
+                var order = $"SSC{DateTime.Now.ToString("yyyyMMddHHmmss")}{_sn.ToString().PadLeft(3, '0')}({Thread.CurrentThread.ManagedThreadId.ToString()})";
                 Console.WriteLine(order);
                 return order;
             }
